@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 18,
+			"name": "metaknight idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				23,
+				6
+			],
+			"anim": "singLEFT",
+			"fps": 18,
+			"name": "metaknight left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				5,
+				6
+			],
+			"anim": "singDOWN",
+			"fps": 18,
+			"name": "metaknight down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-18,
+				-3
+			],
+			"anim": "singUP",
+			"fps": 18,
+			"name": "metaknight up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-50,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 18,
+			"name": "metaknight right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "attack",
+			"fps": 24,
+			"name": "metaknight attack",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/metaknight",
+	"position": [
+		-200,
+		45
+	],
+	"healthicon": "meta",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		235
+	],
+	"camera_position": [
+		200,
+		240
+	],
+	"sing_duration": 4,
+	"scale": 0.7
+}

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="kirby.png">
+<SubTexture name="kirby idle0000" x="1868" y="0" width="1049" height="867" frameX="-191" frameY="-316" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby idle0001" x="1868" y="0" width="1049" height="867" frameX="-191" frameY="-316" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby idle0002" x="1868" y="867" width="1039" height="851" frameX="-196" frameY="-332" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby idle0003" x="0" y="2703" width="1075" height="805" frameX="-180" frameY="-377" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby idle0004" x="0" y="962" width="1045" height="876" frameX="-180" frameY="-307" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby right0000" x="1051" y="1838" width="1081" height="849" frameX="-154" frameY="-334" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby right0001" x="2917" y="846" width="1010" height="837" frameX="-227" frameY="-346" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby down0000" x="1075" y="2703" width="1046" height="746" frameX="-191" frameY="-437" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby down0001" x="2917" y="1683" width="1047" height="804" frameX="-186" frameY="-399" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby up0000" x="0" y="0" width="911" height="962" frameX="-227" frameY="-241" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby up0001" x="911" y="0" width="957" height="885" frameX="-207" frameY="-275" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby left0000" x="0" y="1838" width="1051" height="865" frameX="-208" frameY="-330" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="kirby left0001" x="2917" y="0" width="1051" height="846" frameX="-240" frameY="-345" frameWidth="1378" frameHeight="1378" />
+</TextureAtlas>

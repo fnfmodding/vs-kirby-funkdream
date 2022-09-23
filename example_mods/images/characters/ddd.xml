@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="ddd.png">
+<SubTexture name="ddd idle0000" x="7048" y="2188" width="1531" height="2173" frameX="-431" frameY="-534" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd idle0001" x="3287" y="5020" width="1537" height="2146" frameX="-434" frameY="-562" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd idle0002" x="5486" y="2200" width="1532" height="2156" frameX="-436" frameY="-551" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd idle0003" x="1673" y="5020" width="1614" height="2160" frameX="-425" frameY="-547" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd idle0004" x="0" y="5020" width="1673" height="2174" frameX="-400" frameY="-533" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd right0000" x="4824" y="5020" width="1527" height="2130" frameX="-314" frameY="-578" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd right0001" x="6351" y="5020" width="1539" height="2129" frameX="-297" frameY="-573" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd left0000" x="5486" y="0" width="1562" height="2200" frameX="-500" frameY="-508" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd left0001" x="7048" y="0" width="1588" height="2188" frameX="-506" frameY="-522" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd up0000" x="8636" y="0" width="1824" height="2009" frameX="-363" frameY="-709" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd up0001" x="0" y="7194" width="1853" height="2001" frameX="-359" frameY="-707" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd down0000" x="8636" y="2009" width="1747" height="1883" frameX="-352" frameY="-819" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd down0001" x="8636" y="3892" width="1761" height="1807" frameX="-337" frameY="-899" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd hammer10000" x="3750" y="2698" width="1500" height="2273" frameX="-493" frameY="-442" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd hammer10001" x="0" y="2698" width="1533" height="2322" frameX="-493" frameY="-393" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd hammer10002" x="1684" y="0" width="1585" height="2372" frameX="-493" frameY="-343" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd hammer10003" x="0" y="0" width="1684" height="2698" frameX="-493" frameY="-17" frameWidth="2250" frameHeight="3000" /><SubTexture name="ddd hammerloop0000" x="0" y="0" width="1684" height="2698" frameX="-493" frameY="-17" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd hammer20000" x="3269" y="0" width="2217" height="2352" frameX="-33" frameY="-578" frameWidth="2250" frameHeight="3000" />
+<SubTexture name="ddd hammer20001" x="1533" y="2698" width="2217" height="2309" frameX="-33" frameY="-621" frameWidth="2250" frameHeight="3000" />
+</TextureAtlas>

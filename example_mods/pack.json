@@ -1,6 +1,7 @@
 {
-	"name": "Name",
-	"description": "Description",
+	"name": "FUNK DREAM",
+	"description": "poyo!poyo!",
 	"restart":false,
+	"runsGlobally": false,
 	"color": [170, 0, 255]
 }

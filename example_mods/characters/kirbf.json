@@ -1,0 +1,122 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "kirby idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				13,
+				6
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "kirby right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				13,
+				3
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "kirby left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				3,
+				-3
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "kirby up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				5,
+				4
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "kirby down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-3,
+				4
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "kirby idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-2,
+				4
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "kirby idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				1
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "kirby idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				2
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "kirby idle",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/kirby",
+	"position": [
+		-420,
+		-110
+	],
+	"healthicon": "kirby",
+	"flip_x": true,
+	"healthbar_colors": [
+		255,
+		180,
+		255
+	],
+	"camera_position": [
+		-320,
+		500
+	],
+	"sing_duration": 4,
+	"scale": 0.4
+}

@@ -1,0 +1,41 @@
+{
+	"songs": [
+		[
+			"green greens",
+			"kirby",
+			[
+				255,
+				193,
+				255
+			]
+		],
+		[
+			"vegetable",
+			"kirby",
+			[
+				255,
+				173,
+				255
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "kirbykirby",
+	"difficulties": "",
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"storyName": "poyoyo!",
+	"weekName": "kirby week",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "tutorial",
+	"startUnlocked": true
+}
