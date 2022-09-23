@@ -23,6 +23,7 @@ using StringTools;
 typedef DialogueCharacterFile = {
 	var image:String;
 	var dialogue_pos:String;
+	var no_antialiasing:Bool;
 
 	var animations:Array<DialogueAnimArray>;
 	var position:Array<Float>;
@@ -49,8 +50,7 @@ typedef DialogueLine = {
 	var text:Null<String>;
 	var boxState:Null<String>;
 	var speed:Null<Float>;
-	//var skipdelay:Null<Int>;
-	//var append:Null<Bool>; //thinkin bout having some rpg type text shit.
+	var sound:Null<String>;
 }
 
 class DialogueCharacter extends FlxSprite
@@ -81,6 +81,9 @@ class DialogueCharacter extends FlxSprite
 		reloadCharacterJson(character);
 		frames = Paths.getSparrowAtlas('dialogue/' + jsonFile.image);
 		reloadAnimations();
+
+		antialiasing = ClientPrefs.globalAntialiasing;
+		if(jsonFile.no_antialiasing == true) antialiasing = false;
 	}
 
 	public function reloadCharacterJson(character:String) {
@@ -90,11 +93,11 @@ class DialogueCharacter extends FlxSprite
 		#if MODS_ALLOWED
 		var path:String = Paths.modFolders(characterPath);
 		if (!FileSystem.exists(path)) {
-			path = Main.getDataPath() + Paths.getPreloadPath(characterPath);
+			path = Paths.getPreloadPath(characterPath);
 		}
 
 		if(!FileSystem.exists(path)) {
-			path = Main.getDataPath() + Paths.getPreloadPath('images/dialogue/' + DEFAULT_CHARACTER + '.json');
+			path = Paths.getPreloadPath('images/dialogue/' + DEFAULT_CHARACTER + '.json');
 		}
 		rawJson = File.getContent(path);
 
@@ -177,6 +180,8 @@ class DialogueBoxPsych extends FlxSpriteGroup
 	var offsetPos:Float = -600;
 
 	var textBoxTypes:Array<String> = ['normal', 'angry'];
+	
+	var curCharacter:String = "";
 	//var charPositionList:Array<String> = ['left', 'center', 'right'];
 
 	public function new(dialogueList:DialogueFile, ?song:String = null)
@@ -244,10 +249,8 @@ class DialogueBoxPsych extends FlxSpriteGroup
 			var x:Float = LEFT_CHAR_X;
 			var y:Float = DEFAULT_CHAR_Y;
 			var char:DialogueCharacter = new DialogueCharacter(x + offsetPos, y, individualChar);
-
 			char.setGraphicSize(Std.int(char.width * DialogueCharacter.DEFAULT_SCALE * char.jsonFile.scale));
 			char.updateHitbox();
-			char.antialiasing = ClientPrefs.globalAntialiasing;
 			char.scrollFactor.set();
 			char.alpha = 0.00001;
 			add(char);
@@ -290,20 +293,7 @@ class DialogueBoxPsych extends FlxSpriteGroup
 			bgFade.alpha += 0.5 * elapsed;
 			if(bgFade.alpha > 0.5) bgFade.alpha = 0.5;
 
-                        #if html5
-	                var justTouched:Bool = false;
-
-	                for (touch in FlxG.touches.list)
-	                {
-		             justTouched = false;
-
-		             if (touch.justPressed){
-			         justTouched = true;
-		             }
-	                }
-	                #end
-
-		             if(PlayerSettings.player1.controls.ACCEPT#if html5 || justTouched #end) {
+			if(PlayerSettings.player1.controls.ACCEPT) {
 				if(!daText.finishedText) {
 					if(daText != null) {
 						daText.killTheTimer();
@@ -504,6 +494,7 @@ class DialogueBoxPsych extends FlxSpriteGroup
 		}
 
 		textToType = curDialogue.text;
+		Alphabet.setDialogueSound(curDialogue.sound);
 		daText = new Alphabet(DEFAULT_TEXT_X, DEFAULT_TEXT_Y, textToType, false, true, curDialogue.speed, 0.7);
 		add(daText);
 

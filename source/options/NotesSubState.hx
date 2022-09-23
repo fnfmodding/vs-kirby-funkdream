@@ -47,8 +47,6 @@ class NotesSubState extends MusicBeatSubstate
 		
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.color = 0xFFea71fd;
-		bg.setGraphicSize(Std.int(bg.width * 1.1));
-		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
@@ -91,10 +89,6 @@ class NotesSubState extends MusicBeatSubstate
 		add(hsbText);
 
 		changeSelection();
-
-        #if html5
-		addVirtualPad(FULL, A_B_C);
-		#end
 	}
 
 	var changingNote:Bool = false;
@@ -148,7 +142,7 @@ class NotesSubState extends MusicBeatSubstate
 				changeType(1);
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
-			if(controls.RESET#if html5 || _virtualpad.buttonC.justPressed #end) {
+			if(controls.RESET) {
 				for (i in 0...3) {
 					resetValue(curSelected, i);
 				}
@@ -179,12 +173,7 @@ class NotesSubState extends MusicBeatSubstate
 
 		if (controls.BACK || (changingNote && controls.ACCEPT)) {
 			if(!changingNote) {
-                                ClientPrefs.saveSettings();
-				#if html5
-			MusicBeatState.resetState();
-			#else
-			close();
-			#end
+				close();
 			} else {
 				changeSelection();
 			}

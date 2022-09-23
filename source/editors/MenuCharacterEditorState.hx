@@ -45,7 +45,8 @@ class MenuCharacterEditorState extends MusicBeatState
 			scale: 1,
 			position: [0, 0],
 			idle_anim: 'M Dad Idle',
-			confirm_anim: 'M Dad Idle'
+			confirm_anim: 'M Dad Idle',
+			flipX: false
 		};
 		#if desktop
 		// Updating Discord Rich Presence
@@ -79,10 +80,6 @@ class MenuCharacterEditorState extends MusicBeatState
 		addEditorBox();
 		FlxG.mouse.visible = true;
 		updateCharTypeBox();
-
-		#if html5
-		addVirtualPad(FULL, NONE);
-		#end
 
 		super.create();
 	}
@@ -168,21 +165,26 @@ class MenuCharacterEditorState extends MusicBeatState
 	var confirmInputText:FlxUIInputText;
 	var confirmDescText:FlxText;
 	var scaleStepper:FlxUINumericStepper;
+	var flipXCheckbox:FlxUICheckBox;
 	function addCharacterUI() {
 		var tab_group = new FlxUI(null, UI_mainbox);
 		tab_group.name = "Character";
 		
 		imageInputText = new FlxUIInputText(10, 20, 80, characterFile.image, 8);
-		imageInputText.focusGained = () -> FlxG.stage.window.textInputEnabled = true;		
 		blockPressWhileTypingOn.push(imageInputText);
 		idleInputText = new FlxUIInputText(10, imageInputText.y + 35, 100, characterFile.idle_anim, 8);
-		idleInputText.focusGained = () -> FlxG.stage.window.textInputEnabled = true;		
 		blockPressWhileTypingOn.push(idleInputText);
 		confirmInputText = new FlxUIInputText(10, idleInputText.y + 35, 100, characterFile.confirm_anim, 8);
-		confirmInputText.focusGained = () -> FlxG.stage.window.textInputEnabled = true;		
 		blockPressWhileTypingOn.push(confirmInputText);
 
-		var reloadImageButton:FlxButton = new FlxButton(10, confirmInputText.y + 30, "Reload Char", function() {
+		flipXCheckbox = new FlxUICheckBox(10, confirmInputText.y + 30, null, null, "Flip X", 100);
+		flipXCheckbox.callback = function()
+		{
+			grpWeekCharacters.members[curTypeSelected].flipX = flipXCheckbox.checked;
+			characterFile.flipX = flipXCheckbox.checked;
+		};
+
+		var reloadImageButton:FlxButton = new FlxButton(140, confirmInputText.y + 30, "Reload Char", function() {
 			reloadSelectedCharacter();
 		});
 		
@@ -192,6 +194,7 @@ class MenuCharacterEditorState extends MusicBeatState
 		tab_group.add(new FlxText(10, imageInputText.y - 18, 0, 'Image file name:'));
 		tab_group.add(new FlxText(10, idleInputText.y - 18, 0, 'Idle animation on the .XML:'));
 		tab_group.add(new FlxText(scaleStepper.x, scaleStepper.y - 18, 0, 'Scale:'));
+		tab_group.add(flipXCheckbox);
 		tab_group.add(reloadImageButton);
 		tab_group.add(confirmDescText);
 		tab_group.add(imageInputText);
@@ -235,6 +238,7 @@ class MenuCharacterEditorState extends MusicBeatState
 		char.frames = Paths.getSparrowAtlas('menucharacters/' + characterFile.image);
 		char.animation.addByPrefix('idle', characterFile.idle_anim, 24);
 		if(curTypeSelected == 1) char.animation.addByPrefix('confirm', characterFile.confirm_anim, 24, false);
+		char.flipX = (characterFile.flipX == true);
 
 		char.scale.set(characterFile.scale, characterFile.scale);
 		char.updateHitbox();
@@ -293,19 +297,19 @@ class MenuCharacterEditorState extends MusicBeatState
 			var shiftMult:Int = 1;
 			if(FlxG.keys.pressed.SHIFT) shiftMult = 10;
 
-			if(FlxG.keys.justPressed.LEFT #if html5 || _virtualpad.buttonLeft.justPressed #end) {
+			if(FlxG.keys.justPressed.LEFT) {
 				characterFile.position[0] += shiftMult;
 				updateOffset();
 			}
-			if(FlxG.keys.justPressed.RIGHT #if html5 || _virtualpad.buttonRight.justPressed #end) {
+			if(FlxG.keys.justPressed.RIGHT) {
 				characterFile.position[0] -= shiftMult;
 				updateOffset();
 			}
-			if(FlxG.keys.justPressed.UP #if html5 || _virtualpad.buttonUp.justPressed #end) {
+			if(FlxG.keys.justPressed.UP) {
 				characterFile.position[1] += shiftMult;
 				updateOffset();
 			}
-			if(FlxG.keys.justPressed.DOWN #if html5 || _virtualpad.buttonDown.justPressed #end) {
+			if(FlxG.keys.justPressed.DOWN) {
 				characterFile.position[1] -= shiftMult;
 				updateOffset();
 			}
@@ -331,14 +335,12 @@ class MenuCharacterEditorState extends MusicBeatState
 
 	var _file:FileReference = null;
 	function loadCharacter() {
-		#if desktop //This is not for mobile
 		var jsonFilter:FileFilter = new FileFilter('JSON', 'json');
 		_file = new FileReference();
 		_file.addEventListener(Event.SELECT, onLoadComplete);
 		_file.addEventListener(Event.CANCEL, onLoadCancel);
 		_file.addEventListener(IOErrorEvent.IO_ERROR, onLoadError);
 		_file.browse([jsonFilter]);
-		#end
 	}
 
 	function onLoadComplete(_):Void
@@ -413,8 +415,7 @@ class MenuCharacterEditorState extends MusicBeatState
 			_file.addEventListener(Event.COMPLETE, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
-			_file.save(data, characterName + ".json");			
-	
+			_file.save(data, characterName + ".json");
 		}
 	}
 

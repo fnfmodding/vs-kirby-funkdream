@@ -20,6 +20,12 @@ typedef StageFile = {
 	var boyfriend:Array<Dynamic>;
 	var girlfriend:Array<Dynamic>;
 	var opponent:Array<Dynamic>;
+	var hide_girlfriend:Bool;
+
+	var camera_boyfriend:Array<Float>;
+	var camera_opponent:Array<Float>;
+	var camera_girlfriend:Array<Float>;
+	var camera_speed:Null<Float>;
 }
 
 class StageData {
@@ -45,6 +51,8 @@ class StageData {
 					stage = 'school';
 				case 'thorns':
 					stage = 'schoolEvil';
+				case 'ugh' | 'guns' | 'stress':
+					stage = 'tank';
 				default:
 					stage = 'stage';
 			}
@@ -62,7 +70,7 @@ class StageData {
 
 	public static function getStageFile(stage:String):StageFile {
 		var rawJson:String = null;
-		var path:String = Main.getDataPath() + Paths.getPreloadPath('stages/' + stage + '.json');
+		var path:String = Paths.getPreloadPath('stages/' + stage + '.json');
 
 		#if MODS_ALLOWED
 		var modPath:String = Paths.modFolders('stages/' + stage + '.json');

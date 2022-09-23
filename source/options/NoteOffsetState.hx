@@ -23,7 +23,6 @@ class NoteOffsetState extends MusicBeatState
 
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
-        public var camControls:FlxCamera;
 	public var camOther:FlxCamera;
 
 	var coolText:FlxText;
@@ -47,15 +46,12 @@ class NoteOffsetState extends MusicBeatState
 		// Cameras
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
-                camControls = new FlxCamera();
 		camOther = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
-                camControls.bgColor.alpha = 0;
 		camOther.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
-                FlxG.cameras.add(camControls);
 		FlxG.cameras.add(camOther);
 
 		FlxCamera.defaultCameras = [camGame];
@@ -200,11 +196,6 @@ class NoteOffsetState extends MusicBeatState
 		Conductor.changeBPM(128.0);
 		FlxG.sound.playMusic(Paths.music('offsetSong'), 1, true);
 
-                #if html5
-		addVirtualPad(FULL, A_B_C);
-                _virtualpad.cameras = [camControls];
-                #end
-
 		super.create();
 	}
 
@@ -281,7 +272,6 @@ class NoteOffsetState extends MusicBeatState
 						 startMousePos.y - rating.y >= 0 && startMousePos.y - rating.y <= rating.height)
 				{
 					holdingObjectType = false;
-					FlxG.mouse.getScreenPosition(camHUD, startMousePos);
 					startComboOffset.x = ClientPrefs.comboOffset[0];
 					startComboOffset.y = ClientPrefs.comboOffset[1];
 					//trace('heya');
@@ -304,7 +294,7 @@ class NoteOffsetState extends MusicBeatState
 				}
 			}
 
-			if(controls.RESET#if html5 || _virtualpad.buttonC.justPressed #end)
+			if(controls.RESET)
 			{
 				for (i in 0...ClientPrefs.comboOffset.length)
 				{

@@ -9,6 +9,7 @@ import Controls;
 class ClientPrefs {
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
+	public static var opponentStrums:Bool = true;
 	public static var showFPS:Bool = true;
 	public static var flashing:Bool = true;
 	public static var globalAntialiasing:Bool = true;
@@ -27,9 +28,22 @@ class ClientPrefs {
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
 	public static var healthBarAlpha:Float = 1;
-	public static var controllerMode:Bool = #if desktop false #else true #end;
+	public static var controllerMode:Bool = false;
+	public static var hitsoundVolume:Float = 0;
+	public static var pauseMusic:String = 'Tea Time';
+	public static var checkForUpdates:Bool = true;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
+		'scrolltype' => 'multiplicative', 
+		// anyone reading this, amod is multiplicative speed mod, cmod is constant speed mod, and xmod is bpm based speed mod.
+		// an amod example would be chartSpeed * multiplier
+		// cmod would just be constantSpeed = chartSpeed
+		// and xmod basically works by basing the speed on the bpm.
+		// iirc (beatsPerSecond * (conductorToNoteDifference / 1000)) * noteSize (110 or something like that depending on it, prolly just use note.height)
+		// bps is calculated by bpm / 60
+		// oh yeah and you'd have to actually convert the difference to seconds which I already do, because this is based on beats and stuff. but it should work
+		// just fine. but I wont implement it because I don't know how you handle sustains and other stuff like that.
+		// oh yeah when you calculate the bps divide it by the songSpeed or rate because it wont scroll correctly when speeds exist.
 		'songspeed' => 1.0,
 		'healthgain' => 1.0,
 		'healthloss' => 1.0,
@@ -40,8 +54,6 @@ class ClientPrefs {
 	];
 
 	public static var comboOffset:Array<Int> = [0, 0, 0, 0];
-	public static var keSustains:Bool = false; //i was bored, okay?
-	
 	public static var ratingOffset:Int = 0;
 	public static var sickWindow:Int = 45;
 	public static var goodWindow:Int = 90;
@@ -83,6 +95,7 @@ class ClientPrefs {
 	public static function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.middleScroll = middleScroll;
+		FlxG.save.data.opponentStrums = opponentStrums;
 		FlxG.save.data.showFPS = showFPS;
 		FlxG.save.data.flashing = flashing;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
@@ -112,6 +125,9 @@ class ClientPrefs {
 		FlxG.save.data.safeFrames = safeFrames;
 		FlxG.save.data.gameplaySettings = gameplaySettings;
 		FlxG.save.data.controllerMode = controllerMode;
+		FlxG.save.data.hitsoundVolume = hitsoundVolume;
+		FlxG.save.data.pauseMusic = pauseMusic;
+		FlxG.save.data.checkForUpdates = checkForUpdates;
 	
 		FlxG.save.flush();
 
@@ -128,6 +144,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.middleScroll != null) {
 			middleScroll = FlxG.save.data.middleScroll;
+		}
+		if(FlxG.save.data.opponentStrums != null) {
+			opponentStrums = FlxG.save.data.opponentStrums;
 		}
 		if(FlxG.save.data.showFPS != null) {
 			showFPS = FlxG.save.data.showFPS;
@@ -175,10 +194,6 @@ class ClientPrefs {
 		if(FlxG.save.data.arrowHSV != null) {
 			arrowHSV = FlxG.save.data.arrowHSV;
 		}
-		if(FlxG.save.data.imagesPersist != null) {
-			imagesPersist = FlxG.save.data.imagesPersist;
-			FlxGraphic.defaultPersist = ClientPrefs.imagesPersist;
-		}
 		if(FlxG.save.data.ghostTapping != null) {
 			ghostTapping = FlxG.save.data.ghostTapping;
 		}
@@ -216,6 +231,12 @@ class ClientPrefs {
 		if(FlxG.save.data.controllerMode != null) {
 			controllerMode = FlxG.save.data.controllerMode;
 		}
+		if(FlxG.save.data.hitsoundVolume != null) {
+			hitsoundVolume = FlxG.save.data.hitsoundVolume;
+		}
+		if(FlxG.save.data.pauseMusic != null) {
+			pauseMusic = FlxG.save.data.pauseMusic;
+		}
 		if(FlxG.save.data.gameplaySettings != null)
 		{
 			var savedMap:Map<String, Dynamic> = FlxG.save.data.gameplaySettings;
@@ -233,6 +254,10 @@ class ClientPrefs {
 		if (FlxG.save.data.mute != null)
 		{
 			FlxG.sound.muted = FlxG.save.data.mute;
+		}
+		if (FlxG.save.data.checkForUpdates != null)
+		{
+			checkForUpdates = FlxG.save.data.checkForUpdates;
 		}
 
 		var save:FlxSave = new FlxSave();
@@ -260,7 +285,6 @@ class ClientPrefs {
 		FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
 		FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
 	}
-
 	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey> {
 		var copiedArray:Array<FlxKey> = arrayToCopy.copy();
 		var i:Int = 0;
