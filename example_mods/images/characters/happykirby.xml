@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="happykirby.png">
+<SubTexture name="happykirby idle0000" x="0" y="2264" width="944" height="1003" frameX="-235" frameY="-305" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="happykirby idle0001" x="944" y="2264" width="967" height="995" frameX="-223" frameY="-313" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="happykirby idle0002" x="2653" y="1039" width="966" height="1009" frameX="-213" frameY="-299" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="happykirby right0000" x="957" y="1174" width="1016" height="1062" frameX="-237" frameY="-258" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="happykirby right0001" x="2653" y="0" width="1018" height="1039" frameX="-239" frameY="-281" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="happykirby left0000" x="3671" y="0" width="1041" height="966" frameX="-328" frameY="-334" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="happykirby left0001" x="1911" y="2264" width="1014" height="969" frameX="-360" frameY="-334" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="happykirby up0000" x="1692" y="0" width="961" height="1105" frameX="-267" frameY="-204" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="happykirby up0001" x="0" y="1174" width="957" height="1090" frameX="-270" frameY="-204" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="happykirby down0000" x="0" y="0" width="855" height="1174" frameX="-227" frameY="-204" frameWidth="1378" frameHeight="1378" />
+<SubTexture name="happykirby down0001" x="855" y="0" width="837" height="1138" frameX="-236" frameY="-240" frameWidth="1378" frameHeight="1378" />
+</TextureAtlas>

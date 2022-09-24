@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="barby.png">
+<SubTexture name="barby idle0000" x="388" y="498" width="309" height="290" frameX="-170" frameY="-316" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby idle0001" x="217" y="0" width="311" height="306" frameX="-168" frameY="-300" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby idle0002" x="905" y="0" width="320" height="287" frameX="-154" frameY="-318" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby idle0003" x="905" y="287" width="307" height="281" frameX="-166" frameY="-323" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby right0000" x="528" y="0" width="377" height="305" frameX="-177" frameY="-306" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby left0000" x="0" y="803" width="360" height="263" frameX="-32" frameY="-339" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby down0000" x="711" y="803" width="409" height="127" frameX="-117" frameY="-463" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby up0000" x="107" y="0" width="110" height="497" frameX="-293" frameY="-86" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby right0001" x="0" y="498" width="388" height="305" frameX="-177" frameY="-306" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby left0001" x="360" y="803" width="351" height="263" frameX="-32" frameY="-339" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby down0001" x="711" y="930" width="435" height="102" frameX="-103" frameY="-489" frameWidth="768" frameHeight="768" />
+<SubTexture name="barby up0001" x="0" y="0" width="107" height="498" frameX="-293" frameY="-86" frameWidth="768" frameHeight="768" />
+</TextureAtlas>

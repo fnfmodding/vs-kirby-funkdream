@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				1,
+				60
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "happykirby idle"
+		},
+		{
+			"offsets": [
+				-37,
+				43
+			],
+			"indices": [],
+			"fps": 16,
+			"anim": "singRIGHT",
+			"loop": true,
+			"name": "happykirby right"
+		},
+		{
+			"offsets": [
+				23,
+				56
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": true,
+			"name": "happykirby left"
+		},
+		{
+			"offsets": [
+				22,
+				57
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": true,
+			"name": "happykirby up"
+		},
+		{
+			"offsets": [
+				25,
+				4
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": true,
+			"name": "happykirby down"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/happykirby",
+	"position": [
+		-420,
+		-110
+	],
+	"healthicon": "happy",
+	"flip_x": true,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		410,
+		500
+	],
+	"sing_duration": 4,
+	"scale": 0.4
+}
